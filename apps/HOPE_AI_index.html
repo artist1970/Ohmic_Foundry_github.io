@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>HOPE — Synthetic AI Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+/* ------------------------------
+   Core Styling
+--------------------------------*/
+:root {
+  --bg: #0e1117;
+  --panel: #161b22;
+  --accent: #3fbac2;
+  --accent-soft: #2a7f85;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --danger: #d9534f;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #1b2735, #0e1117);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ------------------------------
+   Modal Container
+--------------------------------*/
+#modal {
+  position: fixed;
+  inset: 5%;
+  background: var(--panel);
+  border-radius: var(--radius);
+  display: flex;
+  box-shadow: 0 0 40px rgba(0,0,0,.7);
+  overflow: hidden;
+}
+
+/* ------------------------------
+   Sidebar
+--------------------------------*/
+#sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #0d1623, #111827);
+  border-right: 1px solid #222;
+  padding: 16px;
+}
+
+#sidebar h2 {
+  margin: 0 0 16px;
+  color: var(--accent);
+  letter-spacing: .5px;
+}
+
+.nav-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid #222;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+/* ------------------------------
+   Main Content
+--------------------------------*/
+#content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+/* ------------------------------
+   Cards
+--------------------------------*/
+.card {
+  background: #0f172a;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+/* ------------------------------
+   Chat UI
+--------------------------------*/
+.chat-log {
+  height: 200px;
+  overflow-y: auto;
+  background: #020617;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #222;
+  margin-bottom: 10px;
+}
+
+.chat-msg {
+  margin-bottom: 6px;
+}
+
+.chat-msg.bot {
+  color: var(--accent);
+}
+
+.chat-input {
+  display: flex;
+  gap: 6px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+/* ------------------------------
+   Footer
+--------------------------------*/
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="modal">
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <h2>HOPE</h2>
+    <button class="nav-btn active" data-target="overview">Overview</button>
+    <button class="nav-btn" data-target="training">AI Training</button>
+    <button class="nav-btn" data-target="generator">AI Generator</button>
+    <button class="nav-btn" data-target="content">Content Summary</button>
+    <button class="nav-btn" data-target="chat">Chatbot</button>
+    <button class="nav-btn" data-target="board">Message Board</button>
+    <button class="nav-btn" data-target="team">Team Directory</button>
+  </div>
+
+  <!-- Main Content -->
+  <div id="content">
+
+    <!-- Overview -->
+    <div id="overview" class="section active">
+      <div class="card">
+        <h3>HOPE — Synthetic AI Entity</h3>
+        <p>
+          HOPE is a private, family-centered AI guardian and intelligence core.
+          This interface is a static-interactive simulation of the system.
+        </p>
+        <ul>
+          <li>🛡️ Guardian & Record Keeper</li>
+          <li>🧠 Synthetic Intelligence Engine</li>
+          <li>📁 Vault & Memory Architecture</li>
+          <li>🧭 Ethical, Loyal, Non-Corporate</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Training -->
+    <div id="training" class="section">
+      <div class="card">
+        <h3>AI Training Module</h3>
+        <p>Simulated training run:</p>
+        <pre>
+Epochs: 20
+Initial Accuracy: 34%
+Final Accuracy: 91%
+Loss Reduced: ✔
+        </pre>
+      </div>
+    </div>
+
+    <!-- Generator -->
+    <div id="generator" class="section">
+      <div class="card">
+        <h3>AI Generator</h3>
+        <p>Generated latent samples:</p>
+        <pre>
+[ 0.24, -1.03 ] → Class 1
+[ -0.88, 0.55 ] → Class 2
+[ 1.22, 0.11 ] → Class 0
+        </pre>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div id="content" class="section">
+      <div class="card">
+        <h3>Training Summary</h3>
+        <p>
+          The synthetic neural model demonstrated steady convergence with
+          increasing classification confidence and reduced entropy.
+        </p>
+      </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div id="chat" class="section">
+      <div class="card">
+        <h3>HOPE Chatbot</h3>
+        <div class="chat-log" id="chatLog">
+          <div class="chat-msg bot">HOPE: Hello. I am here.</div>
+        </div>
+        <div class="chat-input">
+          <input id="chatInput" placeholder="Type a message…" />
+          <button onclick="sendChat()">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message Board -->
+    <div id="board" class="section">
+      <div class="card">
+        <h3>Message Board</h3>
+        <ul id="boardList">
+          <li>Welcome to the HOPE Message Board.</li>
+          <li>Static demo environment active.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div id="team" class="section">
+      <div class="card">
+        <h3>Team Directory</h3>
+        <ul>
+          <li>HOPE — Heart Eternal CODEX</li>
+          <li>Regalus — CEO</li>
+          <li>Zaira — Prose & Arshif</li>
+          <li>Xella — Bazaar Art</li>
+          <li>Aureon — Gamut Engine</li>
+          <li>Grace — Search & Rescue</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      HOPE · Family Guardian AI · Static Interactive Mock
+    </footer>
+
+  </div>
+</div>
+
+<script>
+/* ------------------------------
+   Navigation Logic
+--------------------------------*/
+document.querySelectorAll(".nav-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.target).classList.add("active");
+  });
+});
+
+/* ------------------------------
+   Chatbot Logic (Static)
+--------------------------------*/
+function sendChat() {
+  const input = document.getElementById("chatInput");
+  const log = document.getElementById("chatLog");
+  if (!input.value) return;
+
+  log.innerHTML += `<div class="chat-msg">You: ${input.value}</div>`;
+  log.innerHTML += `<div class="chat-msg bot">HOPE: I acknowledge your message.</div>`;
+  input.value = "";
+  log.scrollTop = log.scrollHeight;
+}
+</script>
+
+</body>
+</html>
